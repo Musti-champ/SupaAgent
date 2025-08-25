@@ -1,0 +1,290 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color scheme to match design brief with emerald theme */
+  --background: #f1f5f9; /* Light neutral background for the main interface */
+  --foreground: #4b5563; /* Dark neutral for text */
+  --card: #ffffff; /* White for card backgrounds */
+  --card-foreground: #475569; /* Subtle dark for card text */
+  --popover: #ffffff; /* Popover backgrounds */
+  --popover-foreground: #4b5563; /* Popover text */
+  --primary: #059669; /* Primary color for buttons and highlights */
+  --primary-foreground: #ffffff; /* Text on primary buttons */
+  --secondary: #10b981; /* Accent color for secondary actions */
+  --secondary-foreground: #ffffff; /* Text on secondary buttons */
+  --muted: #f1f5f9; /* Muted backgrounds */
+  --muted-foreground: #4b5563; /* Muted text */
+  --accent: #059669; /* Accent elements */
+  --accent-foreground: #ffffff; /* Text on accent elements */
+  --destructive: #ea580c; /* Color for error states */
+  --destructive-foreground: #ffffff; /* Text on destructive actions */
+  --border: #e5e7eb; /* Border color for cards and sections */
+  --input: #ffffff; /* Input fields background */
+  --ring: rgba(5, 150, 105, 0.3); /* Focus ring color */
+  --chart-1: #10b981; /* Chart color 1 */
+  --chart-2: #059669; /* Chart color 2 */
+  --chart-3: #ea580c; /* Chart color 3 */
+  --chart-4: #f97316; /* Chart color 4 */
+  --chart-5: #4b5563; /* Chart color 5 */
+  --radius: 0.5rem; /* Rounded corners for cards and buttons */
+  --sidebar: #ffffff; /* Sidebar background */
+  --sidebar-foreground: #4b5563; /* Sidebar text color */
+  --sidebar-primary: #059669; /* Sidebar primary color */
+  --sidebar-primary-foreground: #ffffff; /* Text on primary sidebar elements */
+  --sidebar-accent: #10b981; /* Accent color for sidebar */
+  --sidebar-accent-foreground: #ffffff; /* Text on sidebar accent elements */
+  --sidebar-border: #e5e7eb; /* Sidebar border */
+  --sidebar-ring: rgba(5, 150, 105, 0.3); /* Sidebar focus ring */
+}
+
+.dark {
+  /* Updated dark mode colors to match emerald theme */
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
+  --primary: #10b981;
+  --primary-foreground: #ffffff;
+  --secondary: #059669;
+  --secondary-foreground: #ffffff;
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --accent: #10b981;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #334155;
+  --input: #1e293b;
+  --ring: rgba(16, 185, 129, 0.3);
+  --chart-1: #10b981;
+  --chart-2: #059669;
+  --chart-3: #ea580c;
+  --chart-4: #f97316;
+  --chart-5: #4b5563;
+  --radius: 0.5rem; /* Rounded corners for cards and buttons */
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #059669;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #334155;
+  --sidebar-ring: rgba(16, 185, 129, 0.3);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Mobile-first responsive breakpoints */
+  .mobile-sidebar {
+    @apply block md:hidden;
+  }
+
+  .desktop-sidebar {
+    @apply hidden md:flex;
+  }
+
+  .main-content {
+    @apply pb-16 md:pb-0; /* Add bottom padding on mobile for bottom nav */
+  }
+
+  .chat-container {
+    @apply space-y-4 md:space-y-6;
+  }
+
+  /* Enhanced responsive typography */
+  .responsive-text-sm {
+    @apply text-xs sm:text-sm;
+  }
+
+  .responsive-text-base {
+    @apply text-sm sm:text-base;
+  }
+
+  .responsive-text-lg {
+    @apply text-base sm:text-lg;
+  }
+
+  /* Responsive spacing utilities */
+  .responsive-p-2 {
+    @apply p-2 sm:p-3 md:p-4;
+  }
+
+  .responsive-gap-2 {
+    @apply gap-2 sm:gap-3 md:gap-4;
+  }
+
+  /* Enhanced button styles for deployment */
+  .deployment-button {
+    @apply bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 
+           text-primary-foreground font-medium transition-all duration-200 
+           shadow-lg hover:shadow-xl transform hover:scale-105;
+  }
+
+  .deployment-button:disabled {
+    @apply opacity-50 cursor-not-allowed transform-none shadow-none;
+  }
+
+  /* GitHub integration styles */
+  .github-connected {
+    @apply bg-gradient-to-r from-slate-800 to-slate-900 text-white;
+  }
+
+  .integration-status {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .integration-connected {
+    @apply bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400;
+  }
+
+  .integration-pending {
+    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400;
+  }
+
+  /* Enhanced IDE styling */
+  .ide-header {
+    @apply backdrop-blur-md bg-card/80 border-b border-border/50;
+  }
+
+  .code-editor {
+    @apply font-mono text-sm leading-relaxed;
+  }
+
+  /* Responsive grid layouts */
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+
+  /* Mobile touch targets - Fixed CSS utility class concatenation issue */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Tablet optimizations */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .tablet-optimized {
+      @apply text-base leading-relaxed;
+    }
+
+    .tablet-sidebar {
+      @apply w-72;
+    }
+  }
+
+  /* Large screen optimizations */
+  @media (min-width: 1440px) {
+    .large-screen-optimized {
+      @apply max-w-7xl mx-auto;
+    }
+  }
+
+  /* iOS safe area support */
+  .ios-safe-area {
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Added pb-safe-bottom utility class for safe area bottom padding */
+  .pb-safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Fixed Android navigation bar support by replacing invalid pb-safe-bottom with proper CSS */
+  .android-nav-support {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+@keyframes deploymentPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.deployment-loading {
+  animation: deploymentPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer components {
+  .focus-visible-enhanced:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ring);
+    border-radius: calc(var(--radius) + 2px);
+  }
+
+  .button-enhanced {
+    transition: all 200ms ease-in-out;
+  }
+
+  .button-enhanced:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .button-enhanced:active {
+    transform: scale(0.95);
+  }
+
+  .button-enhanced:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ring);
+    border-radius: calc(var(--radius) + 2px);
+  }
+}

@@ -7,7 +7,7 @@ class Config:
     """Configuration settings for the AI-enhanced scraper."""
     
     # Venice AI OpenRouter settings
-    VENICE_API_KEY = os.getenv('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')
+    VENICE_API_KEY = os.getenv('VENICE_API_KEY')
     OPENROUTER_BASE_URL = os.getenv('OPENROUTER_BASE_URL', 'https://openrouter.ai/api/v1')
     
     # Scraping settings
@@ -28,7 +28,7 @@ class Config:
     REQUESTS_PER_MINUTE = int(os.getenv('REQUESTS_PER_MINUTE', '30'))
     
     # AI training and backend generation configuration
-    MODEL_NAME = os.getenv('SupaAi','miles', 'microsoft/DialoGPT-medium')
+    MODEL_NAME = os.getenv('AI_MODEL_NAME', 'microsoft/DialoGPT-medium')
     MAX_LENGTH = int(os.getenv('AI_MAX_LENGTH', '512'))
     BATCH_SIZE = int(os.getenv('AI_BATCH_SIZE', '8'))
     LEARNING_RATE = float(os.getenv('AI_LEARNING_RATE', '5e-5'))
